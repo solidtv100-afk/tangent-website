@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://solidtv100-afk.github.io/tangent-website/sitemap.xml

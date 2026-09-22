@@ -1,0 +1,76 @@
+name: Deploy to GitHub Pages
+
+# Publishes this repository to GitHub Pages.
+#
+# Settings -> Pages -> Source must be set to "GitHub Actions". The site files
+# are at the repository root, so "Deploy from a branch" would also work as a
+# fallback — but it would publish _tools/ and README.md alongside the site,
+# which this workflow strips out.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# A queued deploy waits rather than cancels: cancelling mid-deploy can leave
+# the live site on a half-published version.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Check the site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Confirm the committed HTML matches the generator
+        # The pages are committed so the site deploys with no build step. This
+        # proves they are current, so an edit made to build.py but never run
+        # cannot ship a stale nav, URL or date.
+        run: |
+          set -euo pipefail
+          python3 _tools/build.py
+          if ! git diff --quiet; then
+            echo "::error::Pages are out of date. Run: python3 _tools/build.py — then commit the result."
+            git --no-pager diff --stat
+            exit 1
+          fi
+          echo "Committed HTML matches the generator."
+
+      - name: Check every internal link resolves
+        # A dead link behind a privacy or data-deletion URL is a Play
+        # compliance failure, not a cosmetic problem.
+        run: python3 _tools/check_links.py
+
+      - name: Stage only what the public site needs
+        run: |
+          set -euo pipefail
+          rm -rf _site && mkdir _site
+          # tar rather than rsync: tar is guaranteed present everywhere, and a
+          # deploy that fails on a missing tool is a bad way to find out.
+          tar --exclude='./.git' --exclude='./.github' --exclude='./_tools' \
+              --exclude='./README.md' --exclude='./_site' -cf - . | tar -xf - -C _site
+          echo "staged:"; find _site -type f | sort
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
