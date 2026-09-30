@@ -21,7 +21,7 @@ BASE_URL = "https://solidtv100-afk.github.io/tangent-website"
 DEVELOPER = "MD AYUB MONDAL"
 EMAIL = "solid.tv.100@gmail.com"
 PACKAGE = "com.tangent.app"
-UPDATED = "22 September 2026"
+UPDATED = "30 September 2026"
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -352,6 +352,8 @@ PRIVACY = """
       <li>Workout progress: completed days, completion percentages, session history and streaks.</li>
       <li>Food and water entries, saved custom foods, and a calorie budget if you set one.</li>
       <li>Fasting sessions, breathing sessions, journey and wellness progress.</li>
+      <li>Activity Log, Sleep Log and Custom Log entries: activities and their minutes, bedtimes, wake-up times and sleep ratings, and the categories, fields and values you create, with any notes you add.</li>
+      <li>Health Checks: your answers and results for the screening questionnaires and the near-vision and color-vision tests, and the screen calibration for the vision test. These are health information; they are kept only on your device, behind the optional app lock, and are never sent anywhere.</li>
       <li>Settings: interface language, haptics, rest duration, first day of the week.</li>
       <li>If you enable the app lock, a salted cryptographic hash of your PIN &mdash; never the PIN itself.</li>
     </ul>
@@ -423,7 +425,7 @@ PRIVACY = """
     <ul>
       <li>
         <strong>Progress export.</strong> You can export a progress report as a
-        PDF or text file. The file is written to the app's temporary storage and
+        PDF or text file, and your custom logs as a CSV spreadsheet file. The file is written to the app's temporary storage and
         then handed to Android's share sheet, where <em>you</em> pick the
         destination &mdash; email, a messaging app, your own files. Tangent
         does not choose a destination and does not send anything by itself.
@@ -544,7 +546,7 @@ DATA_SAFETY = """
         <tbody>
           <tr>
             <td>Health &amp; fitness</td>
-            <td>Workout progress, session history, streaks, fasting and breathing sessions, body metrics you enter, food and water entries</td>
+            <td>Workout progress, session history, streaks, fasting and breathing sessions, body metrics you enter, food and water entries, activity, sleep and custom log entries, Health Check answers and results</td>
             <td>To show your own history and progress back to you</td>
           </tr>
           <tr>
@@ -649,6 +651,8 @@ DELETE = """
       <li>Food entries, saved custom foods, water logs and any calorie budget</li>
       <li>Fasting and breathing session history</li>
       <li>Wellness and gratitude entries</li>
+      <li>Activity, sleep and custom log entries, and your custom log categories</li>
+      <li>Health Check answers and results</li>
       <li>All app settings, including the app-lock PIN hash</li>
     </ul>
 
@@ -900,6 +904,18 @@ DISCLAIMER = """
       history, mobility or experience. Start light, move slowly, use the
       easier variation when one is offered, and consider working with a
       qualified trainer &mdash; especially for unfamiliar exercises.
+    </p>
+
+    <h2>Health Checks are screening only</h2>
+    <p>
+      The Health Checks &mdash; type&nbsp;2 diabetes risk, PCOS symptoms,
+      headache and migraine, near vision and color vision &mdash; use published
+      screening questionnaires and self-tests. They cannot diagnose, rule out or
+      treat any condition, and a phone screen is not a calibrated eye chart.
+      Each result says when to see a professional; follow that advice, and see a
+      doctor about any symptom that worries you whatever a check says. If you
+      think you may be having a medical emergency, call your local emergency
+      number.
     </p>
 
     <h2>Wellness and mental-health content</h2>
