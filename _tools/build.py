@@ -21,7 +21,7 @@ BASE_URL = "https://solidtv100-afk.github.io/tangent-website"
 DEVELOPER = "MD AYUB MONDAL"
 EMAIL = "solid.tv.100@gmail.com"
 PACKAGE = "com.tangent.app"
-UPDATED = "30 September 2026"
+UPDATED = "4 October 2026"
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -354,6 +354,7 @@ PRIVACY = """
       <li>Fasting sessions, breathing sessions, journey and wellness progress.</li>
       <li>Activity Log, Sleep Log and Custom Log entries: activities and their minutes, bedtimes, wake-up times and sleep ratings, and the categories, fields and values you create, with any notes you add.</li>
       <li>Health Checks: your answers and results for the screening questionnaires and the near-vision and color-vision tests, and the screen calibration for the vision test. These are health information; they are kept only on your device, behind the optional app lock, and are never sent anywhere.</li>
+      <li>Relationship Skills: the path you chose, which lessons and practices you completed and when, the minutes you practised, your written reflections, your daily check-ins (feeling words, how strong they were, and any note) and the small habits you chose with their plans. Reflections and check-ins are private writing; they stay only on your device, behind the optional app lock, and are never sent anywhere. The programme gives no scores.</li>
       <li>Settings: interface language, haptics, rest duration, first day of the week.</li>
       <li>If you enable the app lock, a salted cryptographic hash of your PIN &mdash; never the PIN itself.</li>
     </ul>
@@ -546,7 +547,7 @@ DATA_SAFETY = """
         <tbody>
           <tr>
             <td>Health &amp; fitness</td>
-            <td>Workout progress, session history, streaks, fasting and breathing sessions, body metrics you enter, food and water entries, activity, sleep and custom log entries, Health Check answers and results</td>
+            <td>Workout progress, session history, streaks, fasting and breathing sessions, body metrics you enter, food and water entries, activity, sleep and custom log entries, Health Check answers and results, Relationship Skills progress, reflections and check-ins</td>
             <td>To show your own history and progress back to you</td>
           </tr>
           <tr>
@@ -653,6 +654,7 @@ DELETE = """
       <li>Wellness and gratitude entries</li>
       <li>Activity, sleep and custom log entries, and your custom log categories</li>
       <li>Health Check answers and results</li>
+      <li>Relationship Skills progress, reflections, check-ins and habits</li>
       <li>All app settings, including the app-lock PIN hash</li>
     </ul>
 
@@ -916,6 +918,18 @@ DISCLAIMER = """
       doctor about any symptom that worries you whatever a check says. If you
       think you may be having a medical emergency, call your local emergency
       number.
+    </p>
+
+    <h2>Relationship Skills is education, not therapy</h2>
+    <p>
+      The Relationship Skills programme teaches communication and
+      emotional skills drawn from published psychology research, and each
+      lesson says how strong that research is. It is not therapy or
+      counselling, it does not measure or score any relationship, it does not
+      diagnose anyone, and it cannot promise any outcome. If someone hurts,
+      threatens or controls you, that is not a communication problem: contact
+      your local emergency number (999 in Bangladesh) if you are in danger,
+      and reach out to someone you trust or a local support service.
     </p>
 
     <h2>Wellness and mental-health content</h2>
